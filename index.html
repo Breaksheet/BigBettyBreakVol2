@@ -9,35 +9,35 @@
 <link href="https://fonts.googleapis.com/css2?family=Anton&family=Space+Grotesk:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
 <style>
 :root {
-  /* Vegas night */
-  --bg: #0c0718;
-  --bg-2: #120b22;
-  --bg-3: #1a0f2e;
-  /* marquee band */
-  --sunset-1: #ff4f9a;
-  --sunset-2: #ffd84d;
-  --sunset-3: #5b2a8f;
+  /* cyberpunk dusk - dark blue/indigo */
+  --bg: #0a0c18;
+  --bg-2: #0d1020;
+  --bg-3: #12162a;
+  /* horizon band */
+  --sunset-1: #6c3fd9;
+  --sunset-2: #c0532f;
+  --sunset-3: #2a1f4a;
   /* surfaces */
-  --panel: rgba(26, 17, 46, 0.92);
-  --panel-solid: #1a112e;
-  --panel-hover: #261a40;
-  --border: #3a2658;
-  --border-soft: #2a1c44;
+  --panel: rgba(18, 21, 38, 0.92);
+  --panel-solid: #12152a;
+  --panel-hover: #1a1f38;
+  --border: #262c4a;
+  --border-soft: #1d2238;
   /* type */
-  --text: #f3ecff;
-  --muted: #9b86c4;
-  --muted-2: #6b5790;
+  --text: #e9ebf7;
+  --muted: #8a90b5;
+  --muted-2: #5b6188;
   /* brand */
-  --accent: #ff4f9a;      /* primary hot pink */
-  --accent2: #ffd84d;     /* secondary marquee gold */
-  --violet: #8a3ffc;      /* deep violet for gradients */
-  --available: #ff4f9a;
-  --upcoming: #ff4f9a;
-  --on-break: #ffd84d;
-  --done: #6b5790;
+  --accent: #7c5cff;      /* primary violet */
+  --accent2: #d9703f;     /* secondary muted sunset amber */
+  --violet: #4b2fc9;      /* deep violet for gradients */
+  --available: #7c5cff;
+  --upcoming: #7c5cff;
+  --on-break: #d9703f;
+  --done: #5b6188;
   --danger: #ff5c6e;
-  --glow-blue: rgba(255, 79, 154, 0.45);
-  --glow-orange: rgba(255, 216, 77, 0.5);
+  --glow-blue: rgba(124, 92, 255, 0.4);
+  --glow-orange: rgba(217, 112, 63, 0.4);
 }
 
 * { box-sizing: border-box; }
@@ -55,34 +55,34 @@ body {
 /* ====================== VEGAS NEON SCENE ====================== */
 .bg-scene { position: fixed; inset: 0; z-index: -2; overflow: hidden; pointer-events: none; }
 
-/* sky gradient: night top -> sunset horizon */
+/* sky gradient: deep indigo top -> dim orange-red horizon glow */
 .sky {
   position: absolute; inset: 0;
   background:
     linear-gradient(180deg,
-      #07020f 0%,
-      #120a26 26%,
-      #1f1042 48%,
-      #3a1660 66%,
-      #7a1f7a 80%,
-      #c2247e 92%,
-      #ff4f9a 100%);
+      #06070f 0%,
+      #0a0d1c 24%,
+      #11132c 44%,
+      #221c3a 62%,
+      #4a2a3c 78%,
+      #7a3a2e 90%,
+      #c0532f 100%);
 }
-/* a second wash that keeps it blue-dominant per brand */
+/* a second wash that keeps it blue-violet dominant per brand */
 .sky::after {
   content: ""; position: absolute; inset: 0;
-  background: radial-gradient(120% 80% at 50% 118%, rgba(79,141,255,0.0) 40%, rgba(79,141,255,0.22) 72%, rgba(11,18,40,0.0) 100%);
+  background: radial-gradient(120% 80% at 50% 118%, rgba(76,47,201,0.0) 40%, rgba(76,47,201,0.2) 72%, rgba(10,12,24,0.0) 100%);
   mix-blend-mode: screen;
 }
 
-/* the synthwave sun low on the horizon */
+/* dim hazy sun low on the horizon, no neon glow */
 .sun {
   position: absolute; left: 50%; bottom: 4%;
   width: 520px; height: 520px; transform: translateX(-50%);
   border-radius: 50%;
-  background: radial-gradient(circle at 50% 50%, #ffd84d 0%, #ff8fc6 38%, #ff4f9a 60%, rgba(255,79,154,0) 72%);
-  filter: blur(2px);
-  opacity: 0.92;
+  background: radial-gradient(circle at 50% 50%, #d9703f 0%, #b1502f 38%, #6c3fd9 60%, rgba(76,47,201,0) 72%);
+  filter: blur(6px);
+  opacity: 0.55;
 }
 .sun-bands { position: absolute; left: 50%; bottom: 4%; transform: translateX(-50%); width: 360px; height: 360px; }
 
@@ -95,42 +95,33 @@ body {
 }
 @keyframes twinkle { 0%,100%{opacity:0.18;} 50%{opacity:0.85;} }
 
-/* Vegas-strip skyline, drawn entirely in CSS (no raster assets) */
+/* dark monolith skyline against the dim sunset, drawn entirely in CSS (no raster assets) */
 .skyline-css { position: absolute; left: 0; right: 0; bottom: 0; height: 46%; pointer-events: none; }
 .bld {
   position: absolute; bottom: 0;
-  background: linear-gradient(180deg, #1a1030 0%, #0c0718 100%);
-  border-top: 1px solid rgba(255,138,224,0.18);
+  background: linear-gradient(180deg, #141828 0%, #07080f 100%);
+  border-top: 1px solid rgba(124,92,255,0.12);
   box-shadow: 0 0 24px rgba(0,0,0,0.6) inset;
 }
 .bld::before {
   content: ""; position: absolute; inset: 6% 10%;
   background-image:
-    repeating-linear-gradient(0deg, rgba(255,200,90,0.55) 0 3px, transparent 3px 12px),
-    repeating-linear-gradient(90deg, rgba(255,200,90,0.0) 0 9px, rgba(255,200,90,0.35) 9px 11px);
-  opacity: 0.45;
+    repeating-linear-gradient(0deg, rgba(140,150,200,0.22) 0 3px, transparent 3px 14px),
+    repeating-linear-gradient(90deg, rgba(140,150,200,0.0) 0 9px, rgba(140,150,200,0.14) 9px 11px);
+  opacity: 0.5;
 }
 .bld.marquee {
-  box-shadow: 0 0 32px rgba(255,79,154,0.35) inset, 0 -6px 26px rgba(255,79,154,0.28);
-  border-top: 1px solid rgba(255,79,154,0.45);
+  box-shadow: 0 -6px 22px rgba(124,92,255,0.14) inset;
+  border-top: 1px solid rgba(124,92,255,0.22);
 }
-.bld.marquee::after {
-  content: ""; position: absolute; top: -3px; left: 0; right: 0; height: 3px;
-  background: linear-gradient(90deg, var(--accent2), var(--accent), var(--accent2));
-  box-shadow: 0 0 12px var(--glow-orange);
-  animation: marqueeglow 2.4s ease-in-out infinite;
+.bridge-css {
+  position: absolute; left: 18%; right: 18%; bottom: 16%; height: 5px;
+  background: linear-gradient(90deg, transparent, rgba(40,30,55,0.85) 12%, rgba(40,30,55,0.85) 88%, transparent);
+  box-shadow: 0 1px 0 rgba(192,83,47,0.18);
 }
-@keyframes marqueeglow { 0%,100%{opacity:0.6;} 50%{opacity:1;} }
-.neon-grid {
-  position: absolute; left: 0; right: 0; bottom: 0; height: 18%;
-  background-image: linear-gradient(rgba(255,79,154,0.25) 1px, transparent 1px),
-                     linear-gradient(90deg, rgba(255,79,154,0.25) 1px, transparent 1px);
-  background-size: 36px 14px;
-  -webkit-mask-image: linear-gradient(180deg, transparent, rgba(0,0,0,0.9));
-  mask-image: linear-gradient(180deg, transparent, rgba(0,0,0,0.9));
-  transform: perspective(220px) rotateX(55deg);
-  transform-origin: bottom;
-  opacity: 0.5;
+.bridge-css::before {
+  content: ""; position: absolute; left: 46%; bottom: 100%; width: 8px; height: 26px;
+  background: #050609; border-radius: 1px;
 }
 
 /* grain + scanlines for that loading-screen feel */
@@ -239,7 +230,7 @@ header {
   background: rgba(15,12,26,0.85); color: #f0e6ff; font-size: 18px;
   display: flex; align-items: center; justify-content: center;
 }
-.wheel-modal-close:hover { background: rgba(255,79,154,0.85); }
+.wheel-modal-close:hover { background: rgba(124,92,255,0.85); }
 
 .header-right { display: flex; align-items: center; justify-content: flex-end; gap: 10px; flex-wrap: wrap; }
 
@@ -277,10 +268,10 @@ header {
   position: relative; min-height: 168px;
   background:
     linear-gradient(180deg, rgba(7,11,22,0) 30%, rgba(7,11,22,0.65) 100%),
-    linear-gradient(160deg, #1a0f2e 0%, #5b2a8f 48%, #c2247e 78%, #ff4f9a 100%);
+    linear-gradient(160deg, #0d1020 0%, #221c3a 42%, #7a3a2e 76%, #c0532f 100%);
   cursor: pointer; overflow: hidden;
 }
-.hero-art .ha-sun { position: absolute; left: 50%; bottom: -40px; transform: translateX(-50%); width: 180px; height: 180px; border-radius: 50%; background: radial-gradient(circle, #ffd84d, #ff4f9a 60%, transparent 72%); opacity: 0.9; }
+.hero-art .ha-sun { position: absolute; left: 50%; bottom: -40px; transform: translateX(-50%); width: 180px; height: 180px; border-radius: 50%; background: radial-gradient(circle, #d9703f, #6c3fd9 60%, transparent 72%); opacity: 0.6; filter: blur(2px); }
 .hero-art .ha-palm { position: absolute; bottom: -8px; width: 96px; height: auto; opacity: 0.95; filter: drop-shadow(0 6px 14px rgba(0,0,0,0.55)); }
 .hero-art .ha-palm.l { left: -14px; }
 .hero-art .ha-palm.r { right: -18px; transform: scaleX(-1); }
@@ -506,7 +497,7 @@ footer.note { text-align: center; font-size: 12.5px; color: var(--muted-2); marg
       <div class="bld marquee" style="left:86%;width:9%;height:50%;"></div>
       <div class="bld" style="left:96%;width:4%;height:20%;"></div>
     </div>
-    <div class="neon-grid" aria-hidden="true"></div>
+    <div class="bridge-css" aria-hidden="true"></div>
   </div>
   <div class="grain" aria-hidden="true"></div>
   <div class="scanlines" aria-hidden="true"></div>
