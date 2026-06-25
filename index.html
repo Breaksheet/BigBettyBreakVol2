@@ -55,35 +55,26 @@ body {
 /* ====================== VEGAS NEON SCENE ====================== */
 .bg-scene { position: fixed; inset: 0; z-index: -2; overflow: hidden; pointer-events: none; }
 
-/* sky gradient: deep indigo top -> dim orange-red horizon glow */
+/* cyberpunk city photo background */
 .sky {
   position: absolute; inset: 0;
-  background:
-    linear-gradient(180deg,
-      #06070f 0%,
-      #0a0d1c 24%,
-      #11132c 44%,
-      #221c3a 62%,
-      #4a2a3c 78%,
-      #7a3a2e 90%,
-      #c0532f 100%);
+  background-image: url('pasted-1782400216630-0.png');
+  background-size: cover;
+  background-position: center center;
+  background-repeat: no-repeat;
 }
-/* a second wash that keeps it blue-violet dominant per brand */
-.sky::after {
+/* dark overlay to keep UI readable over the bright red city */
+.sky::before {
   content: ""; position: absolute; inset: 0;
-  background: radial-gradient(120% 80% at 50% 118%, rgba(76,47,201,0.0) 40%, rgba(76,47,201,0.2) 72%, rgba(10,12,24,0.0) 100%);
-  mix-blend-mode: screen;
+  background: linear-gradient(180deg,
+    rgba(4,5,14,0.72) 0%,
+    rgba(6,8,18,0.45) 38%,
+    rgba(8,4,4,0.25) 68%,
+    rgba(4,5,14,0.7) 100%);
 }
 
-/* dim hazy sun low on the horizon, no neon glow */
-.sun {
-  position: absolute; left: 50%; bottom: 4%;
-  width: 520px; height: 520px; transform: translateX(-50%);
-  border-radius: 50%;
-  background: radial-gradient(circle at 50% 50%, #d9703f 0%, #b1502f 38%, #6c3fd9 60%, rgba(76,47,201,0) 72%);
-  filter: blur(6px);
-  opacity: 0.55;
-}
+
+.sun { display: none; }
 .sun-bands { position: absolute; left: 50%; bottom: 4%; transform: translateX(-50%); width: 360px; height: 360px; }
 
 /* twinkling stars */
@@ -482,22 +473,7 @@ footer.note { text-align: center; font-size: 12.5px; color: var(--muted-2); marg
       </g>
     </svg>
     <div class="stars" id="stars"></div>
-    <div class="skyline-css" aria-hidden="true">
-      <div class="bld" style="left:2%;width:6%;height:34%;"></div>
-      <div class="bld" style="left:9%;width:4%;height:22%;"></div>
-      <div class="bld marquee" style="left:14%;width:9%;height:52%;"></div>
-      <div class="bld" style="left:24%;width:5%;height:30%;"></div>
-      <div class="bld" style="left:30%;width:7%;height:44%;"></div>
-      <div class="bld marquee" style="left:38%;width:10%;height:64%;"></div>
-      <div class="bld" style="left:49%;width:5%;height:28%;"></div>
-      <div class="bld" style="left:55%;width:6%;height:38%;"></div>
-      <div class="bld marquee" style="left:62%;width:9%;height:56%;"></div>
-      <div class="bld" style="left:72%;width:5%;height:24%;"></div>
-      <div class="bld" style="left:78%;width:7%;height:42%;"></div>
-      <div class="bld marquee" style="left:86%;width:9%;height:50%;"></div>
-      <div class="bld" style="left:96%;width:4%;height:20%;"></div>
-    </div>
-    <div class="bridge-css" aria-hidden="true"></div>
+    <!-- skyline removed -->
   </div>
   <div class="grain" aria-hidden="true"></div>
   <div class="scanlines" aria-hidden="true"></div>
@@ -533,9 +509,8 @@ footer.note { text-align: center; font-size: 12.5px; color: var(--muted-2); marg
   <main class="main">
     <!-- Vegas-marquee hero -->
     <section class="hero">
-      <div class="hero-art">
-        <div class="ha-sun"></div>
-        <div class="ha-hint">Big Betty &middot; City Lights</div>
+      <div class="hero-art has-img">
+        <img src="pasted-1782397716737-0.png" alt="Space station" class="user-art" style="object-position: center top;" />
       </div>
       <div class="hero-body">
         <div class="hero-kicker">Welcome to the city · shift in progress</div>
