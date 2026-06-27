@@ -1211,7 +1211,10 @@ function render() {
       } else {
         clearBtn.textContent = "Clear";
         clearBtn.disabled = !slot.start && !slot.end;
-        clearBtn.addEventListener("click", () => clearSlot(agent.name, slot.id).then(render));
+        clearBtn.addEventListener("click", () => {
+          if (!confirm(`Clear ${agent.name}'s ${slot.start} → ${slot.end} break?`)) return;
+          clearSlot(agent.name, slot.id).then(render);
+        });
       }
       slotEl.appendChild(clearBtn);
 
